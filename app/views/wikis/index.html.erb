@@ -1,0 +1,16 @@
+<h2>All public wikis</h2>
+
+<table class="table table-borderless table-hover">
+	<tbody>
+		<% @wikis.each do |w| %>
+			<tr>
+				<td><%= w.title %></td>
+		    	<td><%= w.body %></td>
+		    	<td><%= link_to "Edit", edit_wiki_path(w) %></td>
+		    	<td><%= link_to "Delete", wiki_path(w), method: :delete, confirm: "Are you sure you want to delete the wiki with title \"#{w.title}\"?" %></td>
+		    </tr>
+		<% end %>
+	</tbody>
+</table>
+
+<%= link_to "Create New Public Wiki", new_wiki_path, method: :get %>

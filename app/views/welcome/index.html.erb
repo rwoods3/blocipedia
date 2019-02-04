@@ -5,7 +5,9 @@
 <section class="d-flex rounded flex-column align-items-center">
 	<div class="d-flex flex-column align-items-center jumbotron w-50">
 	  <p>Create and share Markdown Wikis</p>
-	  <% unless current_user %>
+	  <% if current_user %>
+      <%= button_to "Create Public Wiki", new_wiki_path, method: :get, class: 'btn-primary' %>
+    <% else %>
 		  <%= link_to "Sign Up", new_user_registration_path, :class => 'btn btn-primary btn-md' %>
 		<% end %>
 	</div>
