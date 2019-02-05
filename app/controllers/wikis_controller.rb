@@ -31,6 +31,7 @@ class WikisController < ApplicationController
 	def update
 		@wiki = Wiki.find(params[:id])
 		
+		authorize @wiki
 		if @wiki.update_attributes(wiki_params)
 			flash[:notice] = 'Wiki updated'
 		else
@@ -38,7 +39,6 @@ class WikisController < ApplicationController
 		end
 
 		redirect_to @wiki
-
 	end
 
 	def destroy
