@@ -11,6 +11,16 @@
       <%= devise_error_messages! %>
 
       <div class="field">
+        <%= f.label :role, 'Account Type' %>
+        <%= f.select :role, options_for_select(User.non_admin_roles, current_user.role), {}, {onChange: "javascript: show_fees(this, \"#{current_user.role}\");"} %>
+        <%= content_tag :span, 'A $4.99 fee will be charged to upgrade your account', class: 'upgrade-info' %>
+        <%= link_to "Pay with Card", new_charge_path, class: 'upgrade-info' %>
+        <%= link_to "Downgrade membership", users_downgrade_path, class: 'downgrade-info' %>
+      </div>
+
+      <%= content_tag :hr %>
+
+      <div class="field">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
