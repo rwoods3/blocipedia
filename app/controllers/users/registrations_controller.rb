@@ -5,6 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   def downgrade
+    current_user.wikis.each { |w| w.update_attribute(:private, false) }
     current_user.update_attribute(:role, User.roles['standard'])
     redirect_to edit_user_registration_path(current_user)
   end

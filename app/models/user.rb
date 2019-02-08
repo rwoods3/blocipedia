@@ -10,6 +10,7 @@ class User < ApplicationRecord
     enum role: [:standard, :premium, :admin]
 
     scope :non_admin_roles, -> { group('role').where("role <> '#{User.roles['admin']}'").pluck(:role) }
+    scope :non_standard_roles, -> { group('role').where("role <> '#{User.roles['standard']}'").pluck(:role) }
 
     private
     def set_default_role
