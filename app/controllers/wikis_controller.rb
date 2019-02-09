@@ -30,7 +30,7 @@ class WikisController < ApplicationController
 
 	def update
 		@wiki = Wiki.find(params[:id])
-		Rails.logger.info "FUCK: #{wiki_params}"
+		
 		authorize @wiki
 		if @wiki.update_attributes(wiki_params)
 			flash[:notice] = 'Wiki updated'
