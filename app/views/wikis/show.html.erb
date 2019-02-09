@@ -1,7 +1,7 @@
 <div class="row">
  <div class="col-md-8">
    <p>Title: <%= @wiki.title %></p>
-   <p>Body: <%= @wiki.body %></p>
+   <p>Body: <%= display_markdown(@wiki.body) %></p>
    <p>private: <%= @wiki.private ? 'yes' : 'no' %></p>
  </div>
  <div class="col-md-4">

@@ -2,11 +2,11 @@ require 'rails_helper'
 require 'spec_helper'
 
 RSpec.describe WikisController, type: :controller do
-	let(:wiki) { build(:wiki) }
 	let(:wiki_title) { Faker::ChuckNorris.fact }
 	let(:wiki_body) { Faker::Lorem.sentence(5, false, 50) }
 	let(:user) { create(:user, role: User.roles['standard']) }
 	let(:user_2) { create(:user, role: User.roles['standard']) }
+	let(:wiki) { build(:wiki, user: user) }
 
 	describe "GET new" do
 		before(:each) { sign_in user }
