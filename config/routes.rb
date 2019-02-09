@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  get 'charges/create'
-  	get 'welcome/index'
+  	get 'charges/create'
+	get 'welcome/index'
 
 	#devise_for :users
 	devise_for :users, controllers: { registrations: 'users/registrations' }
